@@ -8,12 +8,33 @@
     <meta name="description"
         content="Unleash the power of intelligent automation with Winchesters Ai Paradox. Premium AI landing page for cutting-edge SaaS startups.">
 
+    <!-- SEO Meta Tags -->
+    <meta property="og:title" content="Winchesters AI Paradox | Intelligent Automation">
+    <meta property="og:description" content="Unleash the power of intelligent automation with Winchesters AI Paradox. Premium AI landing page for cutting-edge SaaS startups.">
+    <meta property="og:image" content="https://winchesters.ai/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Google Analytics 4 (Placeholder) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- AOS Animate On Scroll CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <!-- Google Fonts: Inter Discovery -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap"
         rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -24,9 +45,17 @@
     <header class="glass-nav">
         <div class="container">
             <div class="logo">WINCHESTERS <span>AI PARADOX</span></div>
-            <nav>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Light/Dark Mode">☀️</button>
+                <div class="hamburger" id="hamburgerMenu" aria-label="Menu" role="button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <nav id="navMenu">
                 <a href="#features">Features</a>
-                <a href="#solutions">Solutions</a>
+                <a href="#sandbox">Sandbox</a>
                 <a href="#pricing">Pricing</a>
                 <button class="btn-primary-sm" onclick="openModal()">Get Early Access</button>
             </nav>
@@ -35,14 +64,14 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero-section">
+        <section class="hero-section" data-aos="fade-up" data-aos-duration="1000">
             <div class="container">
-                <div class="hero-badge">PARADOX ENGINE v3.0</div>
-                <h1>RESOLVE THE<br><span>IMPOSSIBLE.</span></h1>
-                <p class="hero-sub">Winchester AI Paradox identifies the hidden conflicts destroying your business and
+                <div class="hero-badge" data-aos="zoom-in" data-aos-delay="200">PARADOX ENGINE v3.0</div>
+                <h1 data-aos="fade-up" data-aos-delay="400">RESOLVE THE<br><span>IMPOSSIBLE.</span></h1>
+                <p class="hero-sub" data-aos="fade-up" data-aos-delay="600">Winchester AI Paradox identifies the hidden conflicts destroying your business and
                     synthesizes them into a single, unstoppable strategic force. <br><strong>Discover your Quantum
                         Archetype below.</strong></p>
-                <div class="hero-actions">
+                <div class="hero-actions" data-aos="fade-up" data-aos-delay="800">
                     <a href="#identity-engine" class="btn-primary">FIND YOUR PARADOX</a>
                     <button class="btn-secondary" onclick="openModal()">Get Early Access</button>
                 </div>
@@ -61,7 +90,7 @@
                 <div class="bento-grid">
                     <!-- Card 1: Large -->
                     <div class="bento-card card-large">
-                        <div class="card-icon">📊</div>
+                        <div class="card-icon" aria-label="Bar chart icon" role="img">📊</div>
                         <h3>ADVANCED ANALYTICS</h3>
                         <p>Predict outcomes and unlock deep insights from your data with zero latency.</p>
                         <div class="card-visual">
@@ -71,28 +100,28 @@
 
                     <!-- Card 2: Small -->
                     <div class="bento-card">
-                        <div class="card-icon">🧠</div>
+                        <div class="card-icon" aria-label="Brain icon" role="img">🧠</div>
                         <h3>NEURAL NETWORK</h3>
                         <p>Optimized models for peak performance.</p>
                     </div>
 
                     <!-- Card 3: Small -->
                     <div class="bento-card">
-                        <div class="card-icon">💬</div>
+                        <div class="card-icon" aria-label="Speech bubble icon" role="img">💬</div>
                         <h3>NLP ENGINE</h3>
                         <p>Human-like language processing.</p>
                     </div>
 
                     <!-- Card 4: Medium -->
                     <div class="bento-card card-medium">
-                        <div class="card-icon">☁️</div>
+                        <div class="card-icon" aria-label="Cloud icon" role="img">☁️</div>
                         <h3>CLOUD INTEGRATION</h3>
                         <p>Seamlessly connect with your existing tech stack through our robust Paradox API.</p>
                     </div>
 
                     <!-- Card 5: Small -->
                     <div class="bento-card">
-                        <div class="card-icon">📸</div>
+                        <div class="card-icon" aria-label="Camera icon" role="img">📸</div>
                         <h3>VISION AI</h3>
                         <p>Identify patterns in visual assets.</p>
                     </div>
@@ -100,8 +129,23 @@
             </div>
         </section>
 
+        <!-- Interactive Sandbox -->
+        <section id="sandbox" class="content-section" data-aos="fade-up">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge">SANDBOX</div>
+                    <h2>TEST THE <span>ENGINE.</span></h2>
+                    <p>Experience zero-latency context inference right now.</p>
+                </div>
+                <div class="sandbox-container">
+                    <input type="text" class="sandbox-input" placeholder="Type a raw strategic thought or market signal..." id="sandboxInput">
+                    <div class="sandbox-output" id="sandboxOutput" style="color: var(--text-secondary); font-family: monospace; min-height: 40px;">// Output will synthesize here...</div>
+                </div>
+            </div>
+        </section>
+
         <!-- The Paradox Trinity: Identity Synthesis -->
-        <section id="identity-engine" class="identity-section">
+        <section id="identity-engine" class="identity-section" data-aos="fade-up">
             <div class="container">
                 <div class="section-header">
                     <div class="badge">IDENTITY SYNTHESIS</div>
@@ -111,55 +155,15 @@
                 </div>
 
                 <div class="quiz-container">
-                    <div class="quiz-step active" id="step1" data-step="1">
-                        <div class="step-progress">Step 1 of 3 (Strategic Intent)</div>
-                        <h3>WHAT DRIVES YOUR ARCHITECTURE?</h3>
-                        <div class="choice-grid">
-                            <button class="choice-btn" onclick="nextStep(1, 'Impact')">
-                                <span class="choice-title">ABSOLUTE IMPACT</span>
-                                <span class="choice-sub">Growth, Force, and Market Domination.</span>
-                            </button>
-                            <button class="choice-btn" onclick="nextStep(1, 'Legacy')">
-                                <span class="choice-title">INFINITE LEGACY</span>
-                                <span class="choice-sub">Sustainability, Trust, and Long-Term Stability.</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="quiz-step" id="step2" data-step="2">
-                        <div class="step-progress">Step 2 of 3 (Operative Method)</div>
-                        <h3>HOW DO YOU NAVIGATE UNCERTAINTY?</h3>
-                        <div class="choice-grid">
-                            <button class="choice-btn" onclick="nextStep(2, 'Order')">
-                                <span class="choice-title">COMMAND & ORDER</span>
-                                <span class="choice-sub">Rigid Structure, Logic, and Precision.</span>
-                            </button>
-                            <button class="choice-btn" onclick="nextStep(2, 'Chaos')">
-                                <span class="choice-title">CONTROLLED CHAOS</span>
-                                <span class="choice-sub">Innovation, Fluidity, and Radical Change.</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="quiz-step" id="step3" data-step="3">
-                        <div class="step-progress">Step 3 of 3 — Core Truth</div>
-                        <h3>WHERE DOES YOUR TRUTH RESIDE?</h3>
-                        <div class="choice-grid">
-                            <button class="choice-btn" onclick="nextStep(3, 'Machine')">
-                                <span class="choice-title">THE MACHINE</span>
-                                <span class="choice-sub">Automation, Efficiency, and Pure Data.</span>
-                            </button>
-                            <button class="choice-btn" onclick="nextStep(3, 'Soul')">
-                                <span class="choice-title">THE SOUL</span>
-                                <span class="choice-sub">Intuition, Empathy, and Human Resonance.</span>
-                            </button>
-                        </div>
+                    <div id="quiz-dynamic-area">
+                        <!-- Questions injected by JS -->
                     </div>
 
                     <!-- Synthesis Phase Visual -->
                     <div class="synthesis-overlay" id="synthesisOverlay">
                         <div class="warp-core"></div>
                         <div class="synthesis-loader">
+                            <div class="spinner-loader"></div>
                             <div class="loading-bar"></div>
                             <span class="loading-text">SYNTHESIZING PARADOX PROFILE...</span>
                         </div>
@@ -183,33 +187,101 @@
 
                 <div class="archetype-meta">
                     <div class="meta-box">
-                        <span class="meta-label">STABILITY</span>
-                        <span class="meta-value" id="stabilityValue">98.4%</span>
+                        <span class="meta-label">CONFIDENCE</span>
+                        <span class="meta-value" id="confidenceValue">91%</span>
                     </div>
                     <div class="meta-box">
-                        <span class="meta-label">ENTROPY</span>
-                        <span class="meta-value" id="entropyValue">02.1%</span>
+                        <span class="meta-label">PRIMARY</span>
+                        <span class="meta-value" id="primaryTraitValue">ANALYTICAL</span>
                     </div>
                     <div class="meta-box">
-                        <span class="meta-label">RESONANCE</span>
-                        <span class="meta-value" id="resonanceValue">HIGH</span>
+                        <span class="meta-label">SECONDARY</span>
+                        <span class="meta-value" id="secondaryTraitValue">AGILE</span>
                     </div>
                 </div>
 
-                <div class="archetype-desc" id="archetypeDesc">
-                    A master of the unseen. You navigate the chaotic data streams with an intuition that defies standard
-                    logic, leaving only high-impact results in your wake.
+                <div class="archetype-insights" id="archetypeInsights">
+                    <p id="archetypeDesc" class="archetype-desc"></p>
+                    <div class="insight-block tension">
+                        <strong>Your Tension:</strong> <span id="insightTension"></span>
+                    </div>
+                    <div class="insight-block superpower">
+                        <strong>Your Superpower:</strong> <span id="insightSuperpower"></span>
+                    </div>
+                    <div class="insight-block blindspot">
+                        <strong>Your Blindspot:</strong> <span id="insightBlindspot"></span>
+                    </div>
+                    <div class="insight-block recommendation">
+                        <strong>Winchester Protocol:</strong> <span id="insightRecommendation"></span>
+                    </div>
                 </div>
 
                 <div class="card-actions">
-                    <button class="btn-primary" onclick="copyShareLink()">⚡ CHALLENGE YOUR NEMESIS</button>
-                    <button class="btn-secondary" onclick="retakeQuiz()">RETAKE SYNTHESIS</button>
+                    <button class="btn-primary" onclick="copyShareLink()">⚡ COPY PARADOX LINK</button>
+                    <button class="btn-secondary" onclick="retakeQuiz()">RECALIBRATE</button>
                 </div>
             </div>
         </div>
 
+        <!-- Social Proof / Testimonials -->
+        <section class="content-section" data-aos="fade-up">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge">SOCIAL PROOF</div>
+                    <h2>TRUSTED BY <span>DISRUPTORS.</span></h2>
+                </div>
+                <div class="bento-grid testimonials-grid">
+                    <div class="testimonial-card">
+                        <p>"Winchester AI replaced an entire strategic planning tier in our operation. The accuracy of the paradox engine is terrifyingly precise."</p>
+                        <h4>— Sarah K., CTO of Nexis Solutions (Example Client)</h4>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"We used to spend weeks debating the right pivot point. Now we run the data through the NLP engine and get actionable truth in seconds."</p>
+                        <h4>— Mark D., Founder of Vanguard Tech (Example Client)</h4>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"The ROI is instantaneous. The system saw market shifts we completely missed and helped us deploy capital perfectly."</p>
+                        <h4>— Elena R., VC Partner at Vertex (Example Client)</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Paradox Papers / Insights -->
+        <section class="content-section" data-aos="fade-up">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge">RESEARCH</div>
+                    <h2>PARADOX <span>PAPERS.</span></h2>
+                </div>
+                <div class="bento-grid papers-grid">
+                    <div class="paper-card">
+                        <div class="paper-img" style="background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=200&fit=crop') center/cover;"></div>
+                        <div class="paper-content">
+                            <h3>The End of the Dashboard</h3>
+                            <p>Why predictive engines are rendering static analytics obsolete.</p>
+                        </div>
+                    </div>
+                    <div class="paper-card">
+                        <div class="paper-img" style="background: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=200&fit=crop') center/cover;"></div>
+                        <div class="paper-content">
+                            <h3>Quantum Scalability</h3>
+                            <p>How the Paradox methodology allows you to decouple growth from headcount.</p>
+                        </div>
+                    </div>
+                    <div class="paper-card">
+                        <div class="paper-img" style="background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=200&fit=crop') center/cover;"></div>
+                        <div class="paper-content">
+                            <h3>The Human Context Limit</h3>
+                            <p>Leveraging NLP automation to process ambiguous market sentiment at volume.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Pricing Section -->
-        <section id="pricing" class="pricing-section">
+        <section id="pricing" class="pricing-section" data-aos="fade-up">
             <div class="container">
                 <div class="section-header">
                     <div class="badge">PRICING</div>
@@ -267,14 +339,18 @@
         <div class="container">
             <div class="footer-top">
                 <div class="logo-small">Winchesters <span>AI Paradox</span></div>
+                <div class="footer-contact">
+                    <p>hello@winchesters.ai</p>
+                    <p>1 (800) 555-PARADOX</p>
+                </div>
                 <div class="social-links">
-                    <a href="#">𝕏</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">LinkedIn</a>
+                    <a href="#" aria-label="Twitter/X">𝕏</a>
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Winchesters Ai Paradox. All rights reserved.</p>
+                <p>&copy; 2026 Winchesters Ai Paradox. All rights reserved. Designed to challenge the impossible.</p>
             </div>
         </div>
     </footer>
@@ -287,20 +363,29 @@
             <p>Our Private Beta is currently at capacity. We prioritize access based on strategic fit and objective
                 scalability.</p>
 
-            <form id="waitlistForm" onsubmit="handleWaitlist(event)">
+            <!-- Formspree Endpoint -->
+            <form id="waitlistForm" action="https://formspree.io/f/your-form-id-here" method="POST" onsubmit="handleWaitlist(event)">
                 <div class="modal-input-group">
-                    <input type="email" placeholder="Business Email" required>
+                    <input type="email" name="email" placeholder="Business Email" required>
                     <button type="submit" class="btn-primary">SECURE PRIORITY SPOT</button>
                 </div>
                 <div class="modal-status" id="modalStatus"></div>
             </form>
 
             <div class="spots-counter">
-                <span class="pulse-dot"></span> 4 Spots remaining for Protocol Cycle 3
+                <span class="pulse-dot"></span> <span class="urgency-text">4 Spots remaining for Protocol Cycle 3</span>
             </div>
         </div>
     </div>
 
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        once: true,
+        offset: 50,
+      });
+    </script>
     <script src="script.js"></script>
 </body>
 
