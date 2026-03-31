@@ -23,12 +23,25 @@
                 <a href="#features">Features</a>
                 <a href="#solutions">Solutions</a>
                 <a href="#pricing">Pricing</a>
-                <button class="btn-primary-sm">Get Early Access</button>
+                <button class="btn-primary-sm" onclick="openModal()">Get Early Access</button>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-badge">PARADOX ENGINE v3.0</div>
+                <h1>RESOLVE THE<br><span>IMPOSSIBLE.</span></h1>
+                <p class="hero-sub">Winchester AI Paradox identifies the hidden conflicts destroying your business and synthesizes them into a single, unstoppable strategic force. <br><strong>Discover your Quantum Archetype below.</strong></p>
+                <div class="hero-actions">
+                    <a href="#identity-engine" class="btn-primary">FIND YOUR PARADOX</a>
+                    <button class="btn-secondary" onclick="openModal()">Get Early Access</button>
+                </div>
+            </div>
+        </section>
+
         <!-- Bento Features Section -->
         <section id="features" class="features-section">
             <div class="container">
@@ -77,43 +90,114 @@
                         <p>Identify patterns in visual assets.</p>
                     </div>
                 </div>
-        <!-- Paradox Pulse Interactive Demo -->
-        <section id="demo" class="demo-section">
+            </div>
+        </section>
+
+        <!-- The Paradox Trinity: Identity Synthesis -->
+        <section id="identity-engine" class="identity-section">
             <div class="container">
                 <div class="section-header">
-                    <div class="badge">THE TASTE</div>
-                    <h2>EXPERIENCE THE <span>PULSE.</span></h2>
-                    <p>Enter a goal and watch the Paradox Engine synthesize a solution in real-time.</p>
+                    <div class="badge">IDENTITY SYNTHESIS</div>
+                    <h2>FIND YOUR <span>PARADOX.</span></h2>
+                    <p>The engine will now evaluate your strategic alignment to synthesize your <span>Quantum Archetype.</span></p>
                 </div>
 
-                <div class="demo-container">
-                    <div class="terminal-window">
-                        <div class="terminal-header">
-                            <div class="dots">
-                                <span></span><span></span><span></span>
-                            </div>
-                            <div class="terminal-title">PARADOX_ENGINE_v1.0.4</div>
+                <div class="quiz-container">
+                    <div class="quiz-step active" id="step1" data-step="1">
+                        <div class="step-progress">Step 1 of 3 (Strategic Intent)</div>
+                        <h3>WHAT DRIVES YOUR ARCHITECTURE?</h3>
+                        <div class="choice-grid">
+                            <button class="choice-btn" onclick="nextStep(1, 'Impact')">
+                                <span class="choice-title">ABSOLUTE IMPACT</span>
+                                <span class="choice-sub">Growth, Force, and Market Domination.</span>
+                            </button>
+                            <button class="choice-btn" onclick="nextStep(1, 'Legacy')">
+                                <span class="choice-title">INFINITE LEGACY</span>
+                                <span class="choice-sub">Sustainability, Trust, and Long-Term Stability.</span>
+                            </button>
                         </div>
-                        <div class="terminal-body">
-                            <div class="pulse-visual-shell">
-                                <div class="pulse-core" id="pulseCore"></div>
-                                <div class="node-field" id="nodeField"></div>
-                            </div>
-                            
-                            <div class="interaction-layer">
-                                <div class="input-wrapper">
-                                    <input type="text" id="demoInput" placeholder="Enter your business goal (e.g. Optimize supply chain)..." autocomplete="off">
-                                    <button class="btn-primary-sm" onclick="runParadoxDemo()">ACTIVATE PULSE</button>
-                                </div>
-                                <div class="status-output" id="statusOutput">
-                                    System standby... Waiting for input.
-                                </div>
-                            </div>
+                    </div>
+
+                    <div class="quiz-step" id="step2" data-step="2">
+                        <div class="step-progress">Step 2 of 3 (Operative Method)</div>
+                        <h3>HOW DO YOU NAVIGATE UNCERTAINTY?</h3>
+                        <div class="choice-grid">
+                            <button class="choice-btn" onclick="nextStep(2, 'Order')">
+                                <span class="choice-title">COMMAND & ORDER</span>
+                                <span class="choice-sub">Rigid Structure, Logic, and Precision.</span>
+                            </button>
+                            <button class="choice-btn" onclick="nextStep(2, 'Chaos')">
+                                <span class="choice-title">CONTROLLED CHAOS</span>
+                                <span class="choice-sub">Innovation, Fluidity, and Radical Change.</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-step" id="step3" data-step="3">
+                        <div class="step-progress">Step 3 of 3 — Core Truth</div>
+                        <h3>WHERE DOES YOUR TRUTH RESIDE?</h3>
+                        <div class="choice-grid">
+                            <button class="choice-btn" onclick="nextStep(3, 'Machine')">
+                                <span class="choice-title">THE MACHINE</span>
+                                <span class="choice-sub">Automation, Efficiency, and Pure Data.</span>
+                            </button>
+                            <button class="choice-btn" onclick="nextStep(3, 'Soul')">
+                                <span class="choice-title">THE SOUL</span>
+                                <span class="choice-sub">Intuition, Empathy, and Human Resonance.</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Synthesis Phase Visual -->
+                    <div class="synthesis-overlay" id="synthesisOverlay">
+                        <div class="warp-core"></div>
+                        <div class="synthesis-loader">
+                            <div class="loading-bar"></div>
+                            <span class="loading-text">SYNTHESIZING PARADOX PROFILE...</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- The Result: Legacy Card Modal -->
+        <div class="result-modal" id="resultModal">
+            <div class="result-card">
+                <div class="card-bg-effect"></div>
+                <div class="card-header">
+                    <div class="archetype-label">QUANTUM ARCHETYPE IDENTIFIED</div>
+                    <h2 id="archetypeName">THE GHOST NAVIGATOR</h2>
+                </div>
+                
+                <div class="emblem-container" id="archetypeEmblem">
+                    <!-- Unique SVG Emblem will be injected here -->
+                </div>
+
+                <div class="archetype-meta">
+                    <div class="meta-box">
+                        <span class="meta-label">STABILITY</span>
+                        <span class="meta-value" id="stabilityValue">98.4%</span>
+                    </div>
+                    <div class="meta-box">
+                        <span class="meta-label">ENTROPY</span>
+                        <span class="meta-value" id="entropyValue">02.1%</span>
+                    </div>
+                    <div class="meta-box">
+                        <span class="meta-label">RESONANCE</span>
+                        <span class="meta-value" id="resonanceValue">HIGH</span>
+                    </div>
+                </div>
+
+                <div class="archetype-desc" id="archetypeDesc">
+                    A master of the unseen. You navigate the chaotic data streams with an intuition that defies standard logic, leaving only high-impact results in your wake.
+                </div>
+
+                <div class="card-actions">
+                    <button class="btn-primary" onclick="copyShareLink()">⚡ CHALLENGE YOUR NEMESIS</button>
+                    <button class="btn-secondary" onclick="retakeQuiz()">RETAKE SYNTHESIS</button>
+                </div>
+            </div>
+        </div>
 
         <!-- Pricing Section -->
         <section id="pricing" class="pricing-section">
@@ -135,7 +219,7 @@
                             <li>3 Managed Agents</li>
                             <li>Community Support</li>
                         </ul>
-                        <button class="btn-secondary">Choose Starter</button>
+                        <button class="btn-secondary" onclick="openModal()">Choose Starter</button>
                     </div>
 
                     <!-- Pro Plan (Highlighed) -->
@@ -150,7 +234,7 @@
                             <li>Priority Support</li>
                             <li>Custom API Access</li>
                         </ul>
-                        <button class="btn-primary">Go Pro</button>
+                        <button class="btn-primary" onclick="openModal()">Go Pro</button>
                     </div>
 
                     <!-- Enterprise Plan -->
@@ -163,7 +247,7 @@
                             <li>On-Premise Deployment</li>
                             <li>24/7 Concierge Support</li>
                         </ul>
-                        <button class="btn-secondary">Contact Sales</button>
+                        <button class="btn-secondary" onclick="openModal()">Contact Sales</button>
                     </div>
                 </div>
             </div>
@@ -185,6 +269,28 @@
             </div>
         </div>
     </footer>
+    <!-- Private Beta Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div class="modal-badge">PRIVATE ACCESS</div>
+            <h2>JOIN THE <span>PARADOX BRANCH.</span></h2>
+            <p>Our Private Beta is currently at capacity. We prioritize access based on strategic fit and objective scalability.</p>
+            
+            <form id="waitlistForm" onsubmit="handleWaitlist(event)">
+                <div class="modal-input-group">
+                    <input type="email" placeholder="Business Email" required>
+                    <button type="submit" class="btn-primary">SECURE PRIORITY SPOT</button>
+                </div>
+                <div class="modal-status" id="modalStatus"></div>
+            </form>
+
+            <div class="spots-counter">
+                <span class="pulse-dot"></span> 4 Spots remaining for Protocol Cycle 3
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

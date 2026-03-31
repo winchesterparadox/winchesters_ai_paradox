@@ -1,69 +1,188 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const nodeField = document.getElementById('nodeField');
-    const pulseCore = document.getElementById('pulseCore');
-    const statusOutput = document.getElementById('statusOutput');
-    const demoInput = document.getElementById('demoInput');
+    // Identity Engine State
+    let currentStep = 1;
+    let answers = {};
 
-    // Initialize Neural Nodes
-    const nodeCount = 20;
-    for (let i = 0; i < nodeCount; i++) {
-        const node = document.createElement('div');
-        node.className = 'node';
-        const x = Math.random() * 100;
-        const y = Math.random() * 100;
-        node.style.left = `${x}%`;
-        node.style.top = `${y}%`;
-        nodeField.appendChild(node);
-    }
+    // DOM Elements
+    const synthesisOverlay = document.getElementById('synthesisOverlay');
+    const loadingBar = document.querySelector('.loading-bar');
+    const resultModal = document.getElementById('resultModal');
+    const modalOverlay = document.getElementById('modalOverlay');
 
-    window.runParadoxDemo = function() {
-        const input = demoInput.value.trim();
-        if (!input) {
-            statusOutput.innerHTML = '<span style="color: #ff4d4d">Error:</span> Please enter a goal to initiate the Paradox Engine.';
-            return;
+    // Archetype Data Configuration
+    const ARCHETYPES = {
+        'ImpactOrderMachine': {
+            name: 'THE KINETIC ARCHITECT',
+            class: 'kinetic',
+            desc: 'A master of structural dominance. You build systems that don\'t just scale—they accelerate. Your logic is a grid that bends reality to your will.',
+            emblem: '<svg viewBox="0 0 100 100" class="archetype-emblem"><rect x="20" y="20" width="60" height="60" stroke-width="2" fill="none" stroke="currentColor"/><path d="M20 20 L80 80 M80 20 L20 80" stroke="currentColor" stroke-width="1"/></svg>',
+            stability: '99.2%', entropy: '0.8%', resonance: 'TOTAL'
+        },
+        'LegacyChaosSoul': {
+            name: 'THE GHOST NAVIGATOR',
+            class: 'ghost',
+            desc: 'The whisper in the machine. You navigate the unseen currents of intuition, creating impact through subtle ripples rather than raw force.',
+            emblem: '<svg viewBox="0 0 100 100" class="archetype-emblem"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10 5"/><circle cx="50" cy="50" r="15" fill="currentColor"/></svg>',
+            stability: '84.5%', entropy: '15.5%', resonance: 'ETHEREAL'
+        },
+        'LegacyOrderMachine': {
+            name: 'THE INFINITE OPTIMIZER',
+            class: 'optimizer',
+            desc: 'Precision is your religion. You see the world as a series of perfectable loops, ruthlessly removing entropy until only pure efficiency remains.',
+            emblem: '<svg viewBox="0 0 100 100" class="archetype-emblem"><path d="M50 10 L90 50 L50 90 L10 50 Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M50 30 L70 50 L50 70 L30 50 Z" fill="currentColor"/></svg>',
+            stability: '99.9%', entropy: '0.1%', resonance: 'ABSOLUTE'
+        },
+        'ImpactChaosSoul': {
+            name: 'THE CHAOS HARMONIZER',
+            class: 'harmonizer',
+            desc: 'A visionary of the storm. You find patterns where others see noise, turning radical change into a symphonic advancement for humanity.',
+            emblem: '<svg viewBox="0 0 100 100" class="archetype-emblem"><path d="M20 50 Q 50 10 80 50 T 20 50" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="50" cy="50" r="10" fill="currentColor"/></svg>',
+            stability: '72.1%', entropy: '27.9%', resonance: 'DYNAMIC'
         }
-
-        // Start animation
-        pulseCore.classList.add('active');
-        statusOutput.innerHTML = 'Initializing Paradox Kernels...';
-        
-        const nodes = document.querySelectorAll('.node');
-        nodes.forEach(n => n.classList.remove('active'));
-
-        const steps = [
-            { text: `Scanning goal: "${input}"`, delay: 1000 },
-            { text: 'Bypassing standard logical constraints...', delay: 2000 },
-            { text: 'Synthesizing contradictory datasets...', delay: 3500 },
-            { text: 'Paradox resolution in progress...', delay: 5000 },
-            { text: 'DONE. Solution synthesized.', delay: 6500, final: true }
-        ];
-
-        steps.forEach((step, index) => {
-            setTimeout(() => {
-                statusOutput.innerHTML = step.text;
-                
-                // Activate some nodes
-                const batchSize = 4;
-                for(let i = 0; i < batchSize; i++) {
-                    const randomNode = nodes[Math.floor(Math.random() * nodes.length)];
-                    randomNode.classList.add('active');
-                }
-
-                if (step.final) {
-                    pulseCore.classList.remove('active');
-                    displayFinalResult(input);
-                }
-            }, step.delay);
-        });
     };
 
-    function displayFinalResult(input) {
-        const results = [
-            `Logic Breach Successful. Unified strategy for <span class="highlight">${input}</span> generated with 99.8% paradox stability.`,
-            `Paradox Resolved. Neural pathways for <span class="highlight">${input}</span> have been optimized beyond 10th-dimension efficiency.`,
-            `Synthesis Complete. The engine has projected a non-linear growth path for <span class="highlight">${input}</span>.`
-        ];
-        const randomResult = results[Math.floor(Math.random() * results.length)];
-        statusOutput.innerHTML = randomResult;
+    // Quiz Navigation
+    window.nextStep = function(step, value) {
+        const currentChoice = step === 1 ? 'Focus' : step === 2 ? 'Method' : 'Core';
+        answers[currentChoice] = value;
+
+        if (step < 3) {
+            document.getElementById(`step${step}`).classList.remove('active');
+            document.getElementById(`step${step + 1}`).classList.add('active');
+            currentStep = step + 1;
+        } else {
+            initiateSynthesis();
+        }
+    };
+
+    function initiateSynthesis() {
+        synthesisOverlay.style.display = 'flex';
+        setTimeout(() => synthesisOverlay.classList.add('active'), 10);
+        
+        // Progress bar animation
+        setTimeout(() => loadingBar.style.width = '100%', 100);
+
+        // Map answers to key
+        // We use a fallback mapping for all 8 combinations
+        const resultKey = determineArchetype(answers);
+        const archetype = ARCHETYPES[resultKey];
+
+        setTimeout(() => {
+            applyMetamorphosis(archetype);
+            showResult(archetype);
+        }, 3500);
     }
+
+    function determineArchetype(ans) {
+        // Simple mapping logic for word-of-mouth appeal
+        const key = `${ans.Focus}${ans.Method}${ans.Core}`;
+        if (ARCHETYPES[key]) return key;
+        
+        // Fallback groupings
+        if (ans.Focus === 'Impact' && ans.Method === 'Order') return 'ImpactOrderMachine';
+        if (ans.Focus === 'Legacy' && ans.Core === 'Soul') return 'LegacyChaosSoul';
+        if (ans.Method === 'Order') return 'LegacyOrderMachine';
+        return 'ImpactChaosSoul';
+    }
+
+    function applyMetamorphosis(archetype) {
+        // Remove previous themes
+        document.body.classList.remove('kinetic', 'ghost', 'optimizer', 'harmonizer');
+        // Apply new theme
+        document.body.classList.add(archetype.class);
+    }
+
+    function showResult(archetype) {
+        document.getElementById('archetypeName').innerText = archetype.name;
+        document.getElementById('archetypeDesc').innerText = archetype.desc;
+        document.getElementById('archetypeEmblem').innerHTML = archetype.emblem;
+        
+        document.getElementById('stabilityValue').innerText = archetype.stability;
+        document.getElementById('entropyValue').innerText = archetype.entropy;
+        document.getElementById('resonanceValue').innerText = archetype.resonance;
+
+        synthesisOverlay.classList.remove('active');
+        setTimeout(() => {
+            synthesisOverlay.style.display = 'none';
+            resultModal.classList.add('active');
+        }, 500);
+    }
+
+    window.closeResultModal = function() {
+        resultModal.classList.remove('active');
+    };
+
+    window.retakeQuiz = function() {
+        // Reset state
+        answers = {};
+        currentStep = 1;
+        // Reset quiz steps
+        document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+        document.getElementById('step1').classList.add('active');
+        // Reset synthesis overlay
+        synthesisOverlay.classList.remove('active');
+        synthesisOverlay.style.display = 'none';
+        loadingBar.style.width = '0%';
+        // Remove theme
+        document.body.classList.remove('kinetic', 'ghost', 'optimizer', 'harmonizer');
+        // Close modal
+        resultModal.classList.remove('active');
+        // Scroll back to quiz
+        document.getElementById('identity-engine').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    window.copyShareLink = function() {
+        const archName = document.getElementById('archetypeName').innerText;
+        const text = `I just discovered I am "${archName}" using Winchester AI Paradox. The engine revealed my strategic DNA in 3 questions. What's yours? ${window.location.href}#identity-engine`;
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('[onclick="copyShareLink()"]');
+                const orig = btn.innerText;
+                btn.innerText = '✓ LINK COPIED!';
+                setTimeout(() => btn.innerText = orig, 2500);
+            });
+        } else {
+            const dummy = document.createElement('textarea');
+            dummy.value = text;
+            document.body.appendChild(dummy);
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert('Paradox Identity Link Copied! Challenge your Nemesis.');
+        }
+    };
+
+    // Modal Handling (Main CTAs)
+    window.openModal = function() {
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeModal = function() {
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    };
+
+    window.handleWaitlist = function(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector('button');
+        const originalText = btn.innerText;
+        btn.innerText = 'ENROLLING PROTOCOL...';
+        
+        setTimeout(() => {
+            btn.innerText = 'SPOT SECURED';
+            btn.style.background = '#00ff88';
+            setTimeout(() => {
+                closeModal();
+                btn.innerText = originalText;
+                btn.style.background = '';
+            }, 2000);
+        }, 1500);
+    };
+
+    // Event Listeners for closing modals
+    window.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) closeModal();
+        if (e.target === resultModal) closeResultModal();
+    });
 });
