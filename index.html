@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winchesters Ai Paradox | Intelligent Automation</title>
+    <meta name="description" content="Unleash the power of intelligent automation with Winchesters Ai Paradox. Premium AI landing page for cutting-edge SaaS startups.">
+    
+    <!-- Google Fonts: Inter Discovery -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glow-background"></div>
+    
+    <header class="glass-nav">
+        <div class="container">
+            <div class="logo">WINCHESTERS <span>AI PARADOX</span></div>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#solutions">Solutions</a>
+                <a href="#pricing">Pricing</a>
+                <button class="btn-primary-sm">Get Early Access</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Bento Features Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge">FEATURES</div>
+                    <h2>THE PARADOX <span>ENGINE.</span></h2>
+                    <p>Unlock capabilities that shouldn't be possible with standard automation.</p>
+                </div>
+
+                <div class="bento-grid">
+                    <!-- Card 1: Large -->
+                    <div class="bento-card card-large">
+                        <div class="card-icon">📊</div>
+                        <h3>ADVANCED ANALYTICS</h3>
+                        <p>Predict outcomes and unlock deep insights from your data with zero latency.</p>
+                        <div class="card-visual">
+                            <div class="bar-chart-mock"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Small -->
+                    <div class="bento-card">
+                        <div class="card-icon">🧠</div>
+                        <h3>NEURAL NETWORK</h3>
+                        <p>Optimized models for peak performance.</p>
+                    </div>
+
+                    <!-- Card 3: Small -->
+                    <div class="bento-card">
+                        <div class="card-icon">💬</div>
+                        <h3>NLP ENGINE</h3>
+                        <p>Human-like language processing.</p>
+                    </div>
+
+                    <!-- Card 4: Medium -->
+                    <div class="bento-card card-medium">
+                        <div class="card-icon">☁️</div>
+                        <h3>CLOUD INTEGRATION</h3>
+                        <p>Seamlessly connect with your existing tech stack through our robust Paradox API.</p>
+                    </div>
+
+                    <!-- Card 5: Small -->
+                    <div class="bento-card">
+                        <div class="card-icon">📸</div>
+                        <h3>VISION AI</h3>
+                        <p>Identify patterns in visual assets.</p>
+                    </div>
+                </div>
+        <!-- Paradox Pulse Interactive Demo -->
+        <section id="demo" class="demo-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge">THE TASTE</div>
+                    <h2>EXPERIENCE THE <span>PULSE.</span></h2>
+                    <p>Enter a goal and watch the Paradox Engine synthesize a solution in real-time.</p>
+                </div>
+
+                <div class="demo-container">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="terminal-title">PARADOX_ENGINE_v1.0.4</div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="pulse-visual-shell">
+                                <div class="pulse-core" id="pulseCore"></div>
+                                <div class="node-field" id="nodeField"></div>
+                            </div>
+                            
+                            <div class="interaction-layer">
+                                <div class="input-wrapper">
+                                    <input type="text" id="demoInput" placeholder="Enter your business goal (e.g. Optimize supply chain)..." autocomplete="off">
+                                    <button class="btn-primary-sm" onclick="runParadoxDemo()">ACTIVATE PULSE</button>
+                                </div>
+                                <div class="status-output" id="statusOutput">
+                                    System standby... Waiting for input.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="badge">PRICING</div>
+                    <h2>CHOOSE YOUR <span>PARADOX.</span></h2>
+                    <p>Scalable plans for every stage of your AI journey.</p>
+                </div>
+
+                <div class="pricing-grid">
+                    <!-- Basic Plan -->
+                    <div class="pricing-card">
+                        <div class="plan-name">STARTER</div>
+                        <div class="price">$29<span>/mo</span></div>
+                        <ul class="plan-features">
+                            <li>5,000 AI Credits</li>
+                            <li>Basic Analytics</li>
+                            <li>3 Managed Agents</li>
+                            <li>Community Support</li>
+                        </ul>
+                        <button class="btn-secondary">Choose Starter</button>
+                    </div>
+
+                    <!-- Pro Plan (Highlighed) -->
+                    <div class="pricing-card featured">
+                        <div class="featured-badge">MOST POPULAR</div>
+                        <div class="plan-name">PRO PARADOX</div>
+                        <div class="price">$79<span>/mo</span></div>
+                        <ul class="plan-features">
+                            <li>Unlimited AI Credits</li>
+                            <li>Advanced Neural Insights</li>
+                            <li>20 Managed Agents</li>
+                            <li>Priority Support</li>
+                            <li>Custom API Access</li>
+                        </ul>
+                        <button class="btn-primary">Go Pro</button>
+                    </div>
+
+                    <!-- Enterprise Plan -->
+                    <div class="pricing-card">
+                        <div class="plan-name">ENTERPRISE</div>
+                        <div class="price">CUSTOM</div>
+                        <ul class="plan-features">
+                            <li>Unlimited Everything</li>
+                            <li>Dedicated AI Consultant</li>
+                            <li>On-Premise Deployment</li>
+                            <li>24/7 Concierge Support</li>
+                        </ul>
+                        <button class="btn-secondary">Contact Sales</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="minimal-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="logo-small">Winchesters <span>AI Paradox</span></div>
+                <div class="social-links">
+                    <a href="#">𝕏</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Winchesters Ai Paradox. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
