@@ -9,7 +9,7 @@
     --text-primary: #ffffff;
     --text-secondary: #a1a1a1;
     --accent-gradient: linear-gradient(135deg, var(--electric-purple), var(--neon-pink));
-    
+
     /* Spacing */
     --container-width: 1200px;
     --section-padding: 100px 20px;
@@ -29,7 +29,10 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, .logo {
+h1,
+h2,
+h3,
+.logo {
     font-family: 'Outfit', sans-serif;
 }
 
@@ -46,7 +49,7 @@ h1, h2, h3, .logo {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
+    background:
         radial-gradient(circle at 20% 20%, rgba(157, 80, 187, 0.15) 0%, transparent 40%),
         radial-gradient(circle at 80% 80%, rgba(110, 72, 170, 0.15) 0%, transparent 40%);
     z-index: -1;
@@ -120,8 +123,15 @@ nav a:hover {
 }
 
 @keyframes fade-in-down {
-    from { opacity: 0; transform: translateY(-15px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-sub {
@@ -132,7 +142,9 @@ nav a:hover {
     line-height: 1.8;
 }
 
-.hero-sub strong { color: white; }
+.hero-sub strong {
+    color: white;
+}
 
 .hero-actions {
     display: flex;
@@ -406,7 +418,7 @@ nav a:hover {
     font-weight: 800;
 }
 
-.pricing-card .btn-primary, 
+.pricing-card .btn-primary,
 .pricing-card .btn-secondary {
     width: 100%;
 }
@@ -522,8 +534,15 @@ body {
 }
 
 @keyframes fade-in-scale {
-    from { opacity: 0; transform: scale(0.98) translateY(10px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
+    from {
+        opacity: 0;
+        transform: scale(0.98) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 .step-progress {
@@ -584,7 +603,10 @@ body {
 /* Synthesis Overlay */
 .synthesis-overlay {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: var(--obsidian);
     display: none;
     flex-direction: column;
@@ -593,14 +615,19 @@ body {
     z-index: 100;
 }
 
-.synthesis-overlay.active { 
-    display: flex; 
+.synthesis-overlay.active {
+    display: flex;
     animation: synthesis-fade 0.8s ease forwards;
 }
 
 @keyframes synthesis-fade {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .warp-core {
@@ -615,8 +642,15 @@ body {
 }
 
 @keyframes warp-pulse {
-    from { transform: scale(0.8); opacity: 0.4; }
-    to { transform: scale(1.8); opacity: 0.8; }
+    from {
+        transform: scale(0.8);
+        opacity: 0.4;
+    }
+
+    to {
+        transform: scale(1.8);
+        opacity: 0.8;
+    }
 }
 
 .synthesis-loader {
@@ -644,7 +678,10 @@ body {
 /* Result Modal & Card */
 .result-modal {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(30px);
     display: none;
@@ -655,8 +692,8 @@ body {
     transition: opacity 0.6s ease;
 }
 
-.result-modal.active { 
-    display: flex; 
+.result-modal.active {
+    display: flex;
     opacity: 1;
 }
 
@@ -681,7 +718,10 @@ body {
 
 .card-bg-effect {
     position: absolute;
-    top: -50%; left: -50%; width: 200%; height: 200%;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
     background: radial-gradient(circle, var(--theme-glow) 0%, transparent 60%);
     opacity: 0.4;
     transition: background 1s ease;
@@ -761,8 +801,8 @@ body {
     gap: 15px;
 }
 
-.card-actions button { 
-    flex: 1; 
+.card-actions button {
+    flex: 1;
     padding: 18px;
     border-radius: 12px;
 }
@@ -770,7 +810,10 @@ body {
 /* Modal Styling (Access Modal) */
 .modal-overlay {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(25px);
     display: none;
@@ -779,7 +822,9 @@ body {
     z-index: 3000;
 }
 
-.modal-overlay.active { display: flex; }
+.modal-overlay.active {
+    display: flex;
+}
 
 .modal-content {
     width: 90%;
@@ -790,13 +835,14 @@ body {
     border-radius: 40px;
     position: relative;
     text-align: center;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
     transition: border-color 0.5s ease;
 }
 
 .close-btn {
     position: absolute;
-    top: 30px; right: 30px;
+    top: 30px;
+    right: 30px;
     background: transparent;
     border: none;
     color: var(--text-secondary);
@@ -816,7 +862,10 @@ body {
     letter-spacing: 1px;
 }
 
-.modal-content h2 { font-size: 2.2rem; margin-bottom: 15px; }
+.modal-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
 
 .modal-input-group {
     display: flex;
@@ -834,7 +883,9 @@ body {
     outline: none;
 }
 
-.modal-content input:focus { border-color: var(--theme-accent); }
+.modal-content input:focus {
+    border-color: var(--theme-accent);
+}
 
 .spots-counter {
     margin-top: 40px;
@@ -847,7 +898,8 @@ body {
 }
 
 .pulse-dot {
-    width: 8px; height: 8px;
+    width: 8px;
+    height: 8px;
     background: #00ff88;
     border-radius: 50%;
     animation: marker-pulse 2s infinite;
@@ -855,17 +907,28 @@ body {
 
 /* Responsiveness Extensions */
 @media (max-width: 768px) {
-    .choice-grid { grid-template-columns: 1fr; }
-    .quiz-step h3 { font-size: 2rem; }
-    .result-card { padding: 50px 30px; }
-    .card-actions { flex-direction: column; }
+    .choice-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quiz-step h3 {
+        font-size: 2rem;
+    }
+
+    .result-card {
+        padding: 50px 30px;
+    }
+
+    .card-actions {
+        flex-direction: column;
+    }
 }
 
 /* --- Metamorphosis Specific Effects --- */
 
 /* Kinetic: Rigid Grids */
 body.kinetic .glow-background {
-    background-image: 
+    background-image:
         linear-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
@@ -887,6 +950,67 @@ body.harmonizer .glow-background {
 }
 
 @keyframes liquid-bg {
-    from { transform: scale(1) rotate(0deg); }
-    to { transform: scale(1.4) rotate(8deg); filter: hue-rotate(15deg); }
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+
+    to {
+        transform: scale(1.4) rotate(8deg);
+        filter: hue-rotate(15deg);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        cursor: auto;
+    }
+
+    .hero-section h1 {
+        font-size: 2.8rem;
+    }
+
+    .section-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+
+    .card-large,
+    .card-medium {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .modal-content {
+        padding: 50px 30px;
+    }
+
+    .archetype-insights {
+        grid-template-columns: 1fr;
+    }
+
+    .result-card {
+        padding: 50px 25px;
+        border-radius: 30px;
+    }
+
+    #activityFeed {
+        display: none;
+    }
 }

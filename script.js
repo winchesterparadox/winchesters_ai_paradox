@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Quiz Navigation
-    window.nextStep = function(step, value) {
+    window.nextStep = function (step, value) {
         const currentChoice = step === 1 ? 'Focus' : step === 2 ? 'Method' : 'Core';
         answers[currentChoice] = value;
 
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function initiateSynthesis() {
         synthesisOverlay.style.display = 'flex';
         setTimeout(() => synthesisOverlay.classList.add('active'), 10);
-        
+
         // Progress bar animation
         setTimeout(() => loadingBar.style.width = '100%', 100);
 
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Simple mapping logic for word-of-mouth appeal
         const key = `${ans.Focus}${ans.Method}${ans.Core}`;
         if (ARCHETYPES[key]) return key;
-        
+
         // Fallback groupings
         if (ans.Focus === 'Impact' && ans.Method === 'Order') return 'ImpactOrderMachine';
         if (ans.Focus === 'Legacy' && ans.Core === 'Soul') return 'LegacyChaosSoul';
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('archetypeName').innerText = archetype.name;
         document.getElementById('archetypeDesc').innerText = archetype.desc;
         document.getElementById('archetypeEmblem').innerHTML = archetype.emblem;
-        
+
         document.getElementById('stabilityValue').innerText = archetype.stability;
         document.getElementById('entropyValue').innerText = archetype.entropy;
         document.getElementById('resonanceValue').innerText = archetype.resonance;
@@ -108,11 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }
 
-    window.closeResultModal = function() {
+    window.closeResultModal = function () {
         resultModal.classList.remove('active');
     };
 
-    window.retakeQuiz = function() {
+    window.retakeQuiz = function () {
         // Reset state
         answers = {};
         currentStep = 1;
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('identity-engine').scrollIntoView({ behavior: 'smooth' });
     };
 
-    window.copyShareLink = function() {
+    window.copyShareLink = function () {
         const archName = document.getElementById('archetypeName').innerText;
         const text = `I just discovered I am "${archName}" using Winchester AI Paradox. The engine revealed my strategic DNA in 3 questions. What's yours? ${window.location.href}#identity-engine`;
         if (navigator.clipboard) {
@@ -153,22 +153,22 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Modal Handling (Main CTAs)
-    window.openModal = function() {
+    window.openModal = function () {
         modalOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
     };
 
-    window.closeModal = function() {
+    window.closeModal = function () {
         modalOverlay.classList.remove('active');
         document.body.style.overflow = 'auto';
     };
 
-    window.handleWaitlist = function(e) {
+    window.handleWaitlist = function (e) {
         e.preventDefault();
         const btn = e.target.querySelector('button');
         const originalText = btn.innerText;
         btn.innerText = 'ENROLLING PROTOCOL...';
-        
+
         setTimeout(() => {
             btn.innerText = 'SPOT SECURED';
             btn.style.background = '#00ff88';
